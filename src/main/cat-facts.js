@@ -29,18 +29,19 @@ button.addEventListener("click", getFact);
  * TODO: working off of the provided code, display a random fact from the cat fact API on your site by setting the
  * innerText of 'content' to the 'fact' property of the responseObject
  */
-async function getFact(){
-
-    //await for the promise containing the HTTP response to resolve
+async function getFact() {
+    // Await the promise containing the HTTP response
     let HTTPResponse = await fetch("https://catfact.ninja/fact");
 
-    //json comes as an incoming stream and can't always be resolved immediately, so it must also be awaited
+    // Await the conversion of the incoming JSON stream
     let responseObject = await HTTPResponse.json();
 
-    //logging the http response to the console
+    // Logging the HTTP response to the console for inspection
     console.log(responseObject);
-}
 
+    // Display the 'fact' property of the responseObject on the page
+    content.innerText = responseObject.fact;
+}
 
 /* OPTIONAL PRACTICE: If you want more practice later, try retrieving data from a different api.
         You can check here for more apis, choose one: https://rapidapi.com/collection/cool-apis
